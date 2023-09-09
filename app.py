@@ -23,11 +23,14 @@ Draw(export=True).add_to(m)
 # Display the map in Streamlit
 c1, c2 = st.columns(2)
 with c1:
-    st_folium(m, width=700, height=500)
+    output = st_folium(m, width=700, height=500)
 
 with c2:
     st.write("Map Output")
 
+
+    lst = [output["bounds"]["_southWest"]["lat"], output["bounds"]["_southWest"]["lng"], output["bounds"]["_northEast"]["lat"], output["bounds"]["_northEast"]["lng"]]
+    st.write(lst)
 # Add a date input for satellite image analysis
 selected_date = st.date_input("Select a date for satellite image analysis")
 
